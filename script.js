@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
     //Verifica qual botão foi apertado para gerar ou limpar as células
     document.getElementById('btn-gerar').addEventListener('click', function() {
         let sudoku = gerarPuzzle()
+        renderizarTabuleiro(sudoku)
         imprimirTabuleiro(sudoku)
     })
     document.getElementById('btn-limpar').addEventListener('click', limparPuzzle)
@@ -77,9 +78,20 @@ function shuffle(array){
 }
 
 //mostra o sudoku no console
-function imprimirTabuleiro(board) {
+function imprimirTabuleiro(board){
     for (let row of board) {
         console.log(row.join(' '))
+    }
+}
+
+//Renderizar o tabuleiro no HTML
+function renderizarTabuleiro(board){
+    for(let r = 0; r < 9; r++){
+        for(let c = 0; c < 9; c++){
+            let celula = document.querySelector(`#cell-${r * 9 + c + 1}`)
+            console.log(board[r][c], celula)
+            celula.textContent = board[r][c] !== 0 ? board[r][c] : '';
+        }
     }
 }
 
