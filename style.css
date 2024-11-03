@@ -11,6 +11,12 @@ body {
     align-items: center;
 }
 
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .sudoku-board {
     display: grid;
     grid-template-columns: repeat(9, 70px);
@@ -30,4 +36,10 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 20px;
+}
+
+.btn {
+    font-size: 1.3em;
+    padding: 10px;
+    margin: 10px;
 }
