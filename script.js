@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
     let celula = document.createElement('div')
     celula.className = 'cell'
     celula.id = `cell-${i+1}`
+    celula.setAttribute('data-column', (i % 9 + 1))
+    celula.setAttribute('data-row', Math.floor(i / 9) + 1)
     tabuleiro.appendChild(celula)
     }
 
@@ -19,6 +21,37 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
         imprimirTabuleiro(sudoku)
     })
     document.getElementById('btn-limpar').addEventListener('click', limparPuzzle)
+
+    //Itera sobre todas as células e troca o Style para que todos da mesma linha e coluna fiquem 'Iluminados'
+    let celula = document.querySelectorAll('.cell')
+    celula.forEach((cell, i) => {
+
+        let column = cell.getAttribute('data-column')
+        let row = cell.getAttribute('data-row')
+
+        cell.addEventListener('mouseover', function iluminar(){
+            document.querySelectorAll(`.cell[data-column="${column}"]`).forEach((c) => {
+                c.classList.add('cell-shining')
+            })
+            document.querySelectorAll(`.cell[data-row="${row}"]`).
+            forEach((r) => {
+                r.classList.add('cell-shining')
+            })
+        })
+        cell.addEventListener('mouseout', function limpar(){
+            document.querySelectorAll(`.cell[data-column="${column}"]`).forEach((c) => {
+                c.classList.remove('cell-shining')
+            })
+            document.querySelectorAll(`.cell[data-row="${row}"]`).
+            forEach((r) => {
+                r.classList.remove('cell-shining')
+            })
+        })
+        cell.addEventListener('click', function preencherColRow(){
+            
+        })
+
+    })
 
 })
 
