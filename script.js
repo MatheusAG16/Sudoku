@@ -6,12 +6,13 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
 
     //Criar as 81 divs
     for(i = 0; i < 81; i++){
-    let celula = document.createElement('div')
-    celula.className = 'cell'
-    celula.id = `cell-${i+1}`
-    celula.setAttribute('data-column', (i % 9 + 1))
-    celula.setAttribute('data-row', Math.floor(i / 9) + 1)
-    tabuleiro.appendChild(celula)
+        let celula = document.createElement('div')
+        celula.className = 'cell'
+        celula.id = `cell-${i+1}`
+        celula.setAttribute('data-column', (i % 9 + 1))
+        celula.setAttribute('data-row', Math.floor(i / 9) + 1)
+        celula.setAttribute('selected', false)
+        tabuleiro.appendChild(celula)
     }
 
     //Verifica qual botão foi apertado para gerar ou limpar as células
@@ -20,44 +21,65 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
         renderizarTabuleiro(sudoku)
         imprimirTabuleiro(sudoku)
     })
+
     document.getElementById('btn-limpar').addEventListener('click', limparPuzzle)
 
     //Itera sobre todas as células e troca o Style para que todos da mesma linha e coluna fiquem 'Iluminados'
+    let selectedCell = null
     let celula = document.querySelectorAll('.cell')
-    celula.forEach((cell, i) => {
+    celula.forEach((cell) => {
 
         let column = cell.getAttribute('data-column')
         let row = cell.getAttribute('data-row')
 
-        cell.addEventListener('mouseover', function iluminar(){
-            document.querySelectorAll(`.cell[data-column="${column}"]`).forEach((c) => {
+        //Função para iluminar a coluna, linha e a celula que ou mouse está
+        cell.addEventListener('mouseover', function shiningCell(){
+            document.querySelectorAll(`.cell[data-column="${column}"], .cell[data-row="${row}"]`).
+            forEach((c) => {
                 c.classList.add('cell-shining')
             })
-            document.querySelectorAll(`.cell[data-row="${row}"]`).
-            forEach((r) => {
-                r.classList.add('cell-shining')
-            })
         })
-        cell.addEventListener('mouseout', function limpar(){
-            document.querySelectorAll(`.cell[data-column="${column}"]`).forEach((c) => {
+
+        //Função para retirar a iluminação da coluna, linha e a celula quando o mouse sai
+        cell.addEventListener('mouseout', function cleanCell(){
+            document.querySelectorAll(`.cell[data-column="${column}"], .cell[data-row="${row}"]`).
+            forEach((c) => {
                 c.classList.remove('cell-shining')
             })
-            document.querySelectorAll(`.cell[data-row="${row}"]`).
-            forEach((r) => {
-                r.classList.remove('cell-shining')
-            })
         })
-        cell.addEventListener('click', function preencherColRow(){
-            
+
+        cell.addEventListener('click', function selectCell() {
+
+            console.log('Este é o txtContent da cell', cell.textContent)
+
+            if(cell.classList.contains('selected')){
+                cell.classList.remove('selected')
+                selectedCell = null
+            }else{
+                if(selectedCell){
+                    selectedCell.classList.remove('selected');
+                }
+                cell.classList.add('selected')
+                selectedCell = cell
+            }
+
+            celula.forEach((c) => {
+                console.log('o textContent é este c:',c.textContent)
+                if(c.textContent == cell.textContent){
+                    c.classList.add('selected')
+                }else{
+                    c.classList.remove('selected')
+                }
+            })
         })
 
     })
-
 })
 
 //Gerar o tabuleiro do sudoku
 function gerarPuzzle(){
     let board = criarTabuleiroVazio()
+    limparEstilo(board)
     fillBoard(board)
     return board
 }
@@ -122,7 +144,7 @@ function renderizarTabuleiro(board){
     for(let r = 0; r < 9; r++){
         for(let c = 0; c < 9; c++){
             let celula = document.querySelector(`#cell-${r * 9 + c + 1}`)
-            console.log(board[r][c], celula)
+            //console.log(board[r][c], celula)
             celula.textContent = board[r][c] !== 0 ? board[r][c] : '';
         }
     }
@@ -135,5 +157,14 @@ function limparPuzzle(){
         celula.textContent = ''
         console.log('tudo limpo')
     }
+    limparEstilo(criarTabuleiroVazio)
 
+}
+
+//Limpar o estilo da célula
+function limparEstilo(){
+    document.querySelectorAll('.cell').forEach((c) => {
+        c.classList.remove('selected')
+        console.log('limpou')
+    })
 }

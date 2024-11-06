@@ -52,6 +52,11 @@ main{
     background-color: #bee7d1;
 }
 
+.selected{
+    background-color: #227a4c;
+    color: #fff;
+}
+
 .btn{
     font-size: 1.3em;
     padding: 10px;
