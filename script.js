@@ -48,32 +48,32 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
             })
         })
 
+        //Função para selecionar a célula com um clique, fazendo com que todas as céulas iguais sejam alteradas
         cell.addEventListener('click', function selectCell() {
-
-            console.log('Este é o txtContent da cell', cell.textContent)
-
-            if(cell.classList.contains('selected')){
-                cell.classList.remove('selected')
-                selectedCell = null
-            }else{
-                if(selectedCell){
-                    selectedCell.classList.remove('selected');
-                }
-                cell.classList.add('selected')
-                selectedCell = cell
-            }
-
-            celula.forEach((c) => {
-                console.log('o textContent é este c:',c.textContent)
-                if(c.textContent == cell.textContent){
-                    c.classList.add('selected')
+                //Se ja estiver selecionada remove o estilo, se não, adiciona e atualiza a variável
+                if(cell.classList.contains('selected')){
+                    cell.classList.remove('selected')
+                    selectedCell = null
                 }else{
-                    c.classList.remove('selected')
+                    if(selectedCell){
+                        selectedCell.classList.remove('selected');
+                    }
+                    cell.classList.add('selected')
+                    selectedCell = cell
                 }
-            })
+                //Verifica qual celula tem o mesmo número e adiciona o estilo
+                celula.forEach((c) => {
+                    if(c.textContent == cell.textContent && cell.textContent !== ''){
+                        c.classList.add('selected')
+                    }else{
+                        c.classList.remove('selected')
+                    }
+                })
         })
 
     })
+
+    
 })
 
 //Gerar o tabuleiro do sudoku
@@ -167,4 +167,21 @@ function limparEstilo(){
         c.classList.remove('selected')
         console.log('limpou')
     })
+}
+
+//Escolha da dificuldade
+document.getElementById('btn-facil').addEventListener('click', () => {
+    apagarConteudo(10)
+})
+document.getElementById('btn-medio').addEventListener('click', () => {
+    apagarConteudo(20)
+})
+document.getElementById('btn-dificil').addEventListener('click', () => {
+    apagarConteudo(30)
+})
+
+//Código da escolha de dificuldade do jogo
+function apagarConteudo(quantidade){
+    gerarPuzzle();
+    console.log(quantidade)
 }
