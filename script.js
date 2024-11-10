@@ -171,17 +171,35 @@ function limparEstilo(){
 
 //Escolha da dificuldade
 document.getElementById('btn-facil').addEventListener('click', () => {
-    apagarConteudo(10)
+    apagarConteudo(30)
 })
 document.getElementById('btn-medio').addEventListener('click', () => {
-    apagarConteudo(20)
+    apagarConteudo(40)
 })
 document.getElementById('btn-dificil').addEventListener('click', () => {
-    apagarConteudo(30)
+    apagarConteudo(50)
 })
 
 //Código da escolha de dificuldade do jogo
 function apagarConteudo(quantidade){
-    gerarPuzzle();
-    console.log(quantidade)
+    let sudoku = gerarPuzzle()
+    renderizarTabuleiro(sudoku)
+    imprimirTabuleiro(sudoku)
+    if(quantidade){
+        let numAleatorios = []
+        while(numAleatorios.length < quantidade){
+            let num = Math.floor(Math.random() * 81)
+            if(!numAleatorios.includes(num)){
+                numAleatorios.push(num)
+                
+                //Apagar o conteúdo da célula
+                let cell = document.getElementById(`cell-${num +1 }`)
+                cell.textContent = ''
+            }
+
+
+        console.log(numAleatorios)
+            
+        }
+    }
 }
