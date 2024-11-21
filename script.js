@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
                 }
                 //Verifica qual celula tem o mesmo número e adiciona o estilo
                 celula.forEach((c) => {
-                    if(c.textContent == cell.textContent && cell.textContent !== ''){
+                    let idC = c.getAttribute('id')
+                    let idCell = cell.getAttribute('id')
+                    if(c.textContent == cell.textContent && cell.textContent !== '' || idC == idCell){
                         c.classList.add('selected')
                     }else{
                         c.classList.remove('selected')
@@ -195,11 +197,7 @@ function apagarConteudo(quantidade){
                 //Apagar o conteúdo da célula
                 let cell = document.getElementById(`cell-${num +1 }`)
                 cell.textContent = ''
-            }
-
-
-        console.log(numAleatorios)
-            
+            }            
         }
     }
 }
