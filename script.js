@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
-    console.log("Tabuleiro gerado!")
 
     //Criar tabuleiro
     let tabuleiro = document.querySelector(".sudoku-board")
@@ -50,32 +49,47 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
 
         //Função para selecionar a célula com um clique, fazendo com que todas as céulas iguais sejam alteradas
         cell.addEventListener('click', function selectCell() {
-                //Se ja estiver selecionada remove o estilo, se não, adiciona e atualiza a variável
-                if(cell.classList.contains('selected')){
-                    cell.classList.remove('selected')
-                    selectedCell = null
-                }else{
-                    if(selectedCell){
-                        selectedCell.classList.remove('selected');
-                    }
-                    cell.classList.add('selected')
-                    selectedCell = cell
+            //Se ja estiver selecionada remove o estilo, se não, adiciona e atualiza a variável
+            if(cell.classList.contains('selected')){
+                cell.classList.remove('selected')
+                selectedCell = null
+            }else{
+                if(selectedCell){
+                    selectedCell.classList.remove('selected');
                 }
-                //Verifica qual celula tem o mesmo número e adiciona o estilo
-                celula.forEach((c) => {
-                    let idC = c.getAttribute('id')
-                    let idCell = cell.getAttribute('id')
-                    if(c.textContent == cell.textContent && cell.textContent !== '' || idC == idCell){
-                        c.classList.add('selected')
-                    }else{
-                        c.classList.remove('selected')
-                    }
+                cell.classList.add('selected')
+                selectedCell = cell
+            }
+
+            //Inserir número na celula
+            function addNum(event){
+                var numClicado = event.target.innerText
+                console.log(selectedCell.getAttribute('id'), numClicado)
+                selectedCell.innerText = numClicado
+            }
+
+            if(selectedCell){
+                let num = document.querySelectorAll('.num')
+
+                num.forEach(function(num){
+                    num.addEventListener('click', addNum)
                 })
+            }
+
+
+            //Verifica qual celula tem o mesmo número e adiciona o estilo
+            celula.forEach((c) => {
+                let idC = c.getAttribute('id')
+                let idCell = cell.getAttribute('id')
+                if(c.textContent == cell.textContent && cell.textContent !== '' || idC == idCell){
+                    c.classList.add('selected')
+                }else{
+                    c.classList.remove('selected')
+                }
+            })
+            console.log(cell, selectedCell)
         })
-
     })
-
-    
 })
 
 //Gerar o tabuleiro do sudoku
@@ -160,7 +174,6 @@ function limparPuzzle(){
         console.log('tudo limpo')
     }
     limparEstilo(criarTabuleiroVazio)
-
 }
 
 //Limpar o estilo da célula
