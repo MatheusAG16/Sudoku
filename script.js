@@ -1,3 +1,5 @@
+var numTab = []
+
 document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
 
     //Criar tabuleiro
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
         let sudoku = gerarPuzzle()
         renderizarTabuleiro(sudoku)
         imprimirTabuleiro(sudoku)
+        numTab = sudoku
     })
 
     document.getElementById('btn-limpar').addEventListener('click', limparPuzzle)
@@ -48,8 +51,9 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
         })
 
         //Função para selecionar a célula com um clique, fazendo com que todas as céulas iguais sejam alteradas
-        cell.addEventListener('click', function selectCell() {
+        cell.addEventListener('click', function selectCell(event) {
             //Se ja estiver selecionada remove o estilo, se não, adiciona e atualiza a variável
+            event.stopPropagation()
             if(cell.classList.contains('selected')){
                 cell.classList.remove('selected')
                 selectedCell = null
@@ -61,13 +65,42 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
                 selectedCell = cell
             }
 
+            document.body.addEventListener('click', function selectCell(){
+                celula.forEach((c) => {
+                    c.classList.remove('selected')
+                })
+                selectedCell = null
+                }
+            )
+
+
+            
+
             //Inserir número na celula
             function addNum(event){
                 var numClicado = event.target.innerText
-                console.log(selectedCell.getAttribute('id'), numClicado)
+                var dataColumn = cell.getAttribute('data-column')
+                var dataRow = cell.getAttribute('data-row')
+
                 selectedCell.innerText = numClicado
+
+                if(numClicado == numTab[dataRow - 1][dataColumn - 1]){
+                    console.log(`O número ${numClicado} é igual ao número ${numTab[dataRow - 1][dataColumn - 1]}, ficar azul`)
+                    selectedCell.classList.remove('cell-incorrect')
+                    selectedCell.classList.add('cell-correct')
+                }else{
+                    console.log(`O número ${numClicado} é DIFERENTE do nu ${numTab[dataRow - 1][dataColumn - 1]}, ficar Vermelho`)
+                    selectedCell.classList.remove('cell-correct')
+                    selectedCell.classList.add('cell-incorrect')
+                }
+
+                console.log('numClicado: ', numClicado)
+                console.log('dataC: ', dataColumn, 'dataRow: ', dataRow)
+                console.log('num tab: ', numTab)
             }
 
+
+            //Inserir os Ouvintes nos selecionadores de números
             if(selectedCell){
                 let num = document.querySelectorAll('.num')
 
@@ -87,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
                     c.classList.remove('selected')
                 }
             })
-            console.log(cell, selectedCell)
+            console.log(selectedCell)
         })
     })
 })
@@ -200,6 +233,7 @@ function apagarConteudo(quantidade){
     let sudoku = gerarPuzzle()
     renderizarTabuleiro(sudoku)
     imprimirTabuleiro(sudoku)
+    
     if(quantidade){
         let numAleatorios = []
         while(numAleatorios.length < quantidade){
@@ -213,4 +247,6 @@ function apagarConteudo(quantidade){
             }            
         }
     }
+    
+    numTab = sudoku
 }

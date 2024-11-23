@@ -88,6 +88,14 @@ section#sessao-num{
     background-color: #bee7d1;
 }
 
+.cell-correct{
+    background-color: #bee7d1;
+}
+
+.cell-incorrect{
+    background-color: #fa9999;
+}
+
 .selected{
     background-color: #227a4c;
     color: #fff;
