@@ -106,7 +106,8 @@ section#sessao-num{
 .btn{
     width: 10vw;
     height: 10vh;
-=======
+}
+
 .cell-selected{
     background-color: #80a491;
 }
@@ -115,5 +116,4 @@ section#sessao-num{
     font-size: 1.3em;
     padding: 10px;
     margin: 10px;
->>>>>>> Stashed changes
 }
