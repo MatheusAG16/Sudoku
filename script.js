@@ -213,6 +213,7 @@ function limparPuzzle(){
 function limparEstilo(){
     document.querySelectorAll('.cell').forEach((c) => {
         c.classList.remove('selected')
+        c.classList.remove('cell-correct', 'cell-incorrect')
         console.log('limpou')
     })
 }

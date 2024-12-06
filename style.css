@@ -98,6 +98,7 @@ section#sessao-num{
 
 .selected{
     background-color: #227a4c;
+    border: 1px solid #fff;
     color: #fff;
 }
 
