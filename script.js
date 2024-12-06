@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
                 c.classList.remove('cell-shining')
             })
         })
-<<<<<<< Updated upstream
 
         //Função para selecionar a célula com um clique, fazendo com que todas as céulas iguais sejam alteradas
         cell.addEventListener('click', function selectCell(event) {
@@ -73,9 +72,6 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
                 selectedCell = null
                 }
             )
-
-
-            
 
             //Inserir número na celula
             function addNum(event){
@@ -122,32 +118,29 @@ document.addEventListener('DOMContentLoaded', function gerarTabuleiro(){
                 }
             })
             console.log(selectedCell)
-=======
-        cell.addEventListener('click', function preencherColRow(){
-
-            let coluna = cell.getAttribute('data-column')
-            let linha = cell.getAttribute('data-row')
 
 
-            let selected = [coluna, linha]
+            cell.addEventListener('click', function preencherColRow(){
+                let coluna = cell.getAttribute('data-column')
+                let linha = cell.getAttribute('data-row')
 
+                let selected = [coluna, linha]
 
-            if(!selected){
-                document.querySelectorAll('.cell-selected').forEach((c) => {
-                    c.classList.remove('cell-selected')
-                    selected = true
-                })
+                if(!selected){
+                    document.querySelectorAll('.cell-selected').forEach((c) => {
+                        c.classList.remove('cell-selected')
+                        selected = true
+                    })
 
-                document.querySelectorAll(`.cell[data-column="${column}"], .cell[data-row="${row}"]`).forEach((c) => {
-                    c.classList.add('cell-selected')
-                })
-            } if(selected) {
-                document.querySelectorAll('.cell-selected').forEach((c) => {
-                    c.classList.remove('cell-selected')
-                })
-            }
-
->>>>>>> Stashed changes
+                    document.querySelectorAll(`.cell[data-column="${column}"], .cell[data-row="${row}"]`).forEach((c) => {
+                        c.classList.add('cell-selected')
+                    })
+                } if(selected) {
+                    document.querySelectorAll('.cell-selected').forEach((c) => {
+                        c.classList.remove('cell-selected')
+                    })
+                }
+            })
         })
     })
 })
@@ -275,6 +268,4 @@ function apagarConteudo(quantidade){
             }            
         }
     }
-    
-    numTab = sudoku
 }
