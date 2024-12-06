@@ -88,6 +88,7 @@ section#sessao-num{
     background-color: #bee7d1;
 }
 
+<<<<<<< Updated upstream
 .cell-correct{
     background-color: #bee7d1;
 }
@@ -105,4 +106,14 @@ section#sessao-num{
 .btn{
     width: 10vw;
     height: 10vh;
+=======
+.cell-selected{
+    background-color: #80a491;
+}
+
+.btn{
+    font-size: 1.3em;
+    padding: 10px;
+    margin: 10px;
+>>>>>>> Stashed changes
 }
