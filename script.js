@@ -228,6 +228,9 @@ document.getElementById('btn-medio').addEventListener('click', () => {
 document.getElementById('btn-dificil').addEventListener('click', () => {
     apagarConteudo(50)
 })
+document.getElementById('btn-especialista').addEventListener('click', () => {
+    apagarConteudo(60)
+})
 
 //Código da escolha de dificuldade do jogo
 function apagarConteudo(quantidade){
@@ -243,7 +246,7 @@ function apagarConteudo(quantidade){
                 numAleatorios.push(num)
                 
                 //Apagar o conteúdo da célula
-                let cell = document.getElementById(`cell-${num +1 }`)
+                let cell = document.getElementById(`cell-${num+1}`)
                 cell.textContent = ''
             }            
         }
