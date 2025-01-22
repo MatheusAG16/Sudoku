@@ -220,16 +220,16 @@ function limparEstilo(){
 
 //Escolha da dificuldade
 document.getElementById('btn-facil').addEventListener('click', () => {
-    apagarConteudo(30)
+    apagarConteudo(25)
 })
 document.getElementById('btn-medio').addEventListener('click', () => {
-    apagarConteudo(40)
+    apagarConteudo(35)
 })
 document.getElementById('btn-dificil').addEventListener('click', () => {
-    apagarConteudo(50)
+    apagarConteudo(45)
 })
 document.getElementById('btn-especialista').addEventListener('click', () => {
-    apagarConteudo(60)
+    apagarConteudo(55)
 })
 
 //Código da escolha de dificuldade do jogo

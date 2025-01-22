@@ -3,9 +3,11 @@
     padding: 0;
 }
 
-body{
-    height: 100vh;
-    width: 100vw;
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", serif;
 }
 
 header{
@@ -23,11 +25,11 @@ nav{
 
 main{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     width: 80%;
-    margin-left: 10vw;
-    margin: 1em;
+    padding: 1em;
 }
 
 section#sessao-btn {
@@ -38,6 +40,34 @@ section#sessao-btn {
 
 section#sessao-num{
     margin-left: 15px;
+}
+
+
+/*Parte do código referente aos textos do começo do site: Sobre, como jogar e etc...*/
+.sobre {
+    width: 80%;
+    line-height: 1.6;
+    margin: 20px;
+    margin-top: 40px;
+    font-size: 1em;
+    color: #0000009d;
+}
+
+.sobre ul {
+    margin-bottom: 20px;
+}
+
+.sobre h2{
+    font-size: 2em;
+    color: #227a4c;
+}
+
+.sobre h3{
+    color: #5c8a73;
+}
+
+.sobre p, li {
+    margin-bottom: 20px;
 }
 
 .num{
@@ -51,6 +81,7 @@ section#sessao-num{
     border: 1px solid #227a4c;
     margin: 1px 2px 2px 1px;
     background-color: #2e7750;
+    border-radius: 10%;
 }
 
 .sudoku-board{
@@ -71,7 +102,7 @@ section#sessao-num{
     font-size: 2em;
     width: 5vw;
     height: 10vh;
-    color: #4c8166;
+    color: #72b492;
 }
 
 .cell[data-column="3"], .cell[data-column="6"]{ 
@@ -89,11 +120,11 @@ section#sessao-num{
 }
 
 .cell-correct{
-    background-color: #bee7d1;
+    color: #227a4c;
 }
 
 .cell-incorrect{
-    background-color: #fa9999;
+    color: #ed6a6a;
 }
 
 .selected{
