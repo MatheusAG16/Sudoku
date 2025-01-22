@@ -8,17 +8,19 @@ body {
     align-items: center;
     justify-content: center;
     font-family: "Inter", serif;
+    flex-wrap: wrap;
 }
 
 header{
-    height: 1em;
-    width: 100vw;  
+    height: 3em;
+    width: 100%;  
 }
 
 nav{
     height: 100%;
     border: 1px solid #227a4c5c;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding-left: 5em;
 }
