@@ -3,26 +3,66 @@
     padding: 0;
 }
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
     font-family: "Inter", serif;
-    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
 }
 
 header{
     height: 3em;
-    width: 100%;  
+    width: 100%;
+}
+
+#ancora {
+    position: relative;
+    top: 50px;
+    height: 10px;
+}
+
+button {
+    transition: .6s;
+    cursor: pointer;
+    color: rgba(191, 205, 197, 1);
+}
+
+button:hover {
+    color: white;
 }
 
 nav{
     height: 100%;
-    border: 1px solid #227a4c5c;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding-left: 5em;
+    background-color: #227a4c;
+}
+
+a {
+    color: rgba(191, 205, 197, 1);
+    text-decoration: none;
+    transition: .6s;
+}
+
+a:hover {
+    color: #fff;
+}
+
+.nav-item {
+    display: inline;
+    padding: 0 0 0 2em;
+    white-space: nowrap;
+}
+
+.nav-list {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding-right: 1em;
 }
 
 main{
@@ -30,29 +70,92 @@ main{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    padding: 1em;
+    width: 100%;
+    padding-top: 3em;
 }
 
-section#sessao-btn {
+#sessao-play {
+    width: 100%;
+    height: 100vh;
+    border-bottom: 1px solid #227a4c;
+}
+
+.icon-title {
+    width: 30px;
+    height: 30px;
+}
+
+.title {
+    text-align: center;
+    position: relative;
+    top: 10%;
+}
+
+.title h1{
+    font-size: 3em;
+    color: #227a4c;
+    text-shadow: 2px 1px 1px #1a5536;
+
+}
+
+.title p {
+    font-size: 1em;
+    color: #1a5536;
+}
+
+#sessao-play button {
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 10%;
+    border: 1px solid white;
+    box-shadow: 1px 2px 2px rgba(94, 175, 113, 0.301);
+    border-radius: 10px;
+    font-size: 1.5em;
+    color: rgba(191, 205, 197, 1);
+    background-color: #227a4c;
+}
+
+#sessao-play button:hover {
+    color: #fff;
+}
+
+#tabuleiro {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    right: 3%;
+}
+
+#sessao-btn {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
+    order: -1;
 }
 
-section#sessao-num{
+#sessao-num{
     margin-left: 15px;
 }
 
+#apagar {
+    background-image: url('images/borracha-icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-size: 50%;
+}
 
 /*Parte do código referente aos textos do começo do site: Sobre, como jogar e etc...*/
 .sobre {
-    width: 80%;
+    width: 60%;
     line-height: 1.6;
-    margin: 20px;
-    margin-top: 40px;
     font-size: 1em;
     color: #0000009d;
+    padding: 10%;
 }
 
 .sobre ul {
@@ -68,7 +171,7 @@ section#sessao-num{
     color: #5c8a73;
 }
 
-.sobre p, li {
+.sobre p, .sobre li {
     margin-bottom: 20px;
 }
 
@@ -77,7 +180,6 @@ section#sessao-num{
     align-items: center;
     justify-content: center;
     font-size: 2em;
-    color: white;
     width: 4vw;
     height: 8vh;
     border: 1px solid #227a4c;
@@ -88,8 +190,8 @@ section#sessao-num{
 
 .sudoku-board{
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(9, 1fr);
+    grid-template-columns: repeat(9, .8fr);
+    grid-template-rows: repeat(9, .8fr);
     background-color: #227a4c;
     border: 3.5px solid #227a4c;
 }
@@ -135,17 +237,17 @@ section#sessao-num{
     color: #fff;
 }
 
-.btn{
-    width: 10vw;
-    height: 10vh;
-}
-
 .cell-selected{
     background-color: #80a491;
 }
 
 .btn{
-    font-size: 1.3em;
+    background-color: #227a4c;
+    color: rgba(191, 205, 197, 1);
+    border-radius: 5px;
+    font-size: 1.2em;
     padding: 10px;
     margin: 10px;
+    white-space: nowrap;
+    border: none;
 }
