@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+@media (max-width: 620px) {
+
+    .container {
+        padding-top: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    #tabuleiro {
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center; 
+        right: 0%;
+    }
+
+    #sessao-div {
+        order: 0;
+    }
+
+    #sessao-num {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        order: 1;
+        padding-top: 10px;
+        margin: 0;
+    }
+
+    .num{
+        width: 9vw;
+    }
+
+    #sessao-btn {
+        display: none;
+    }
+
+    .sudoku-board {
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: repeat(9, 1fr);
+    }
+
+    .cell {
+        width: 10.5vw;
+        height: 10.5vw;
+    }
+
+}
+
+@media (min-width: 621px){
+    .menu-toggle{
+        display: none;
+    }
+
+    .menu-dificuldade.active {
+        display: none;
+    }
+
+}

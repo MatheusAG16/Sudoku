@@ -232,17 +232,12 @@ function limparEstilo() {
 }
 
 //Escolha da dificuldade
-document.getElementById("btn-facil").addEventListener("click", () => {
-  apagarConteudo(25);
-});
-document.getElementById("btn-medio").addEventListener("click", () => {
-  apagarConteudo(35);
-});
-document.getElementById("btn-dificil").addEventListener("click", () => {
-  apagarConteudo(45);
-});
-document.getElementById("btn-especialista").addEventListener("click", () => {
-  apagarConteudo(55);
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("btn-dificuldade")) {
+    const level = event.target.getAttribute("data-level");
+    console.log("Apertou o botao o level está em ", level)
+    apagarConteudo(level);
+  }
 });
 
 //Código da escolha de dificuldade do jogo
@@ -266,4 +261,9 @@ function apagarConteudo(quantidade) {
   }
 
   numTab = sudoku;
+}
+
+//Função para mostrar o menu de dificuldades nos dispositivos mobile
+function toggleMenu() {
+  document.querySelector('.menu-dificuldade').classList.toggle('active');
 }

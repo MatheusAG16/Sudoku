@@ -122,11 +122,38 @@ main{
     color: #fff;
 }
 
+.menu-dificuldade {
+    display: none;
+}
+
+.menu-toggle {
+    position: relative;
+    right: 46%;
+    display: none;
+    cursor: pointer;
+    background-color: #227a4c;
+    color: white;
+    padding: 5px;
+    margin: 10px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.menu-dificuldade.active {
+    display: inline;
+}
+
 #tabuleiro {
     display: none;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
     position: relative;
     right: 3%;
 }
@@ -206,6 +233,8 @@ main{
     font-size: 2em;
     width: 5vw;
     height: 10vh;
+    min-width: 50px;
+    min-height: 50px;
     color: #72b492;
 }
 
@@ -241,11 +270,12 @@ main{
     background-color: #80a491;
 }
 
-.btn{
+.btn, .btn-dificuldade{
     background-color: #227a4c;
     color: rgba(191, 205, 197, 1);
     border-radius: 5px;
     font-size: 1.2em;
+    text-align: center;
     padding: 10px;
     margin: 10px;
     white-space: nowrap;
