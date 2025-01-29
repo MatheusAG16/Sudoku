@@ -233,8 +233,6 @@ main{
     font-size: 2em;
     width: 5vw;
     height: 10vh;
-    min-width: 50px;
-    min-height: 50px;
     color: #72b492;
 }
 
@@ -280,4 +278,71 @@ main{
     margin: 10px;
     white-space: nowrap;
     border: none;
+}
+
+@media (max-width: 620px) {
+
+    .container {
+        padding-top: 0;
+    }
+
+    .nav-item {
+        padding: 0 0 0 1em;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: relative;
+        right: 43%;
+    }
+
+    #tabuleiro {
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center; 
+        right: 0%;
+    }
+
+    #sessao-div {
+        order: 0;
+    }
+
+    #sessao-num {
+        display: flex;
+        width: 95%;
+        justify-content: center;
+        order: 1;
+        padding-top: 10px;
+        margin: 0;
+    }
+
+    .num{
+        width: 9vw;
+    }
+
+    #sessao-btn {
+        display: none;
+    }
+
+    .sudoku-board {
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: repeat(9, 1fr);
+    }
+
+    .cell {
+        width: 10vw;
+        height: 10vw;
+    }
+
+}
+
+@media (min-width: 621px){
+    .menu-toggle{
+        display: none;
+    }
+
+    .menu-dificuldade.active {
+        display: none;
+    }
+
 }
