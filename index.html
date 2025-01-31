@@ -26,6 +26,7 @@
     src="https://www.googletagmanager.com/gtag/js?id=G-CSZ0N09MMY"
   ></script>
   <script>
+    //Google Manager
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
@@ -35,8 +36,9 @@
     gtag("config", "G-CSZ0N09MMY");
   </script>
   <body>
+    <!--Cabeçalho do site-->
     <header id="top">
-      <nav class="menu">
+      <nav class="menu" aria-label="Menu de navegação">
         <ul class="nav-list">
           <li class="nav-item"><a href="#sobre">Sobre</a></li>
           <li class="nav-item"><a href="#sobre">Como jogar</a></li>
@@ -46,9 +48,13 @@
       </nav>
     </header>
 
+
+    <!--Ancora para ajustar o site com o auto-scroll e ficar na tela de jogo-->
     <div id="ancora"></div>
 
+    <!--Todo o conteudo do site-->
     <main class="container">
+      <!--Parte inicial do site-->
       <section class="sessao" id="sessao-play">
         <div class="title">
           <h1>
@@ -62,7 +68,7 @@
           <p>Venhar jogar online!</p>
         </div>
 
-        <button id="play" onclick="teste()">Jogar</button>
+        <button id="play" onclick="jogar()">Jogar</button>
       </section>
 
       <div class="menu-toggle" onclick="toggleMenu()">
@@ -72,6 +78,7 @@
       </div>
 
       <section id="tabuleiro">
+        <!--Area dos botões de dificuldade do menu "Hamburguer" (mobile)-->
         <menu class="menu-dificuldade">
           <button class="btn-dificuldade" data-level="25" id="btn-facil-m">
             Fácil
@@ -89,18 +96,19 @@
           >
             Genio
           </button>
-          <button class="btn" id="btn-limpar-m" onclick="limparPuzzle()">
+          <button class="btn" id="btn-limpar-m" aria-label="Apagar" onclick="limparPuzzle()">
             Limpar
           </button>
         </menu>
 
         <section class="sessao" id="sessao-div">
           <div class="sudoku-board">
-            <!--Repetir a celular 81 vezes-->
+            <!--As 81 células do tabuleiro serão geradas pelo script em JS-->
           </div>
         </section>
 
         <section id="sessao-num">
+          <!--Seletores númericos para adicionar ao tabuleiro-->
           <button class="num" id="num-1">1</button>
           <button class="num" id="num-2">2</button>
           <button class="num" id="num-3">3</button>
@@ -114,6 +122,7 @@
         </section>
 
         <section class="sessao" id="sessao-btn">
+          <!--Area dos botões de dificuldades-->
           <button class="btn" id="btn-gerar">Gerar Puzzle</button>
           <button class="btn" id="btn-limpar">Limpar Puzzle</button>
           <button class="btn-dificuldade" data-level="25" id="btn-facil">
