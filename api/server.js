@@ -8,7 +8,7 @@ require("dotenv").config();
 
 // Middleware para processar JSON e formulários
 app.use(express.json());
-app.use(express.urlenconded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // Conectando ao MongoDB Atlas
 const uri = process.env.MONGODB_URI;
@@ -29,8 +29,6 @@ const Usuario = mongoose.model("Usuario", UsuarioSchema);
 // Rota para processar o cadastro
 app.post("/cadastro", async (req, res) => {
   const { nome, email, senha } = req.body;
-
-  const novoUsuario = new Usuario({ nome, email, senha });
 
   try {
     const novoUsuario = new Usuario({ nome, email, senha });
