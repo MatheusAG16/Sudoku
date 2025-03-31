@@ -27,8 +27,5 @@
       "src": "/cadastro",
       "dest": "cadastro.html"
     }
-  ],
-  "static": {
-    "public": "./public"
-  }
+  ]
 }
