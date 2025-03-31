@@ -1,10 +1,6 @@
 const express = require("express");
-// const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
-require("dotenv").config();
-
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware para processar JSON e formulários
 app.use(express.json());
@@ -13,7 +9,11 @@ app.use(express.urlencoded({ extended: true }));
 // Conectando ao MongoDB Atlas
 const uri = process.env.MONGODB_URI;
 mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(
+    uri ||
+      "mongodb+srv://matheusandradegermano:YiodjGltvLzLo1b9@cluster0.dcrm1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
   .then(() => console.log("Conectado ao MongoDB com sucesso!"))
   .catch((err) => console.error("Erro ao conectar ao MongoDB.", err));
 

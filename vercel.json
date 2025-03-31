@@ -2,14 +2,33 @@
   "version": 2,
   "builds": [
     {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "api/server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "cadastro.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/server.js"
+    },
+    {
+      "src": "/cadastro",
+      "dest": "cadastro.html"
     }
-  ]
+  ],
+  "static": {
+    "public": "./public"
+  }
 }
